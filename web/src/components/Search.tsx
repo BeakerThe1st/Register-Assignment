@@ -42,9 +42,12 @@ const Search = (props: { addItem: Function }) => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     const itemName = searchText.toLowerCase();
     event.preventDefault();
-    const request = await fetch(`http://localhost:9000/item/${itemName}`, {
-      mode: "cors",
-    });
+    const request = await fetch(
+      `http://ec2-18-224-69-120.us-east-2.compute.amazonaws.com:9000/item/${itemName}`,
+      {
+        mode: "cors",
+      }
+    );
 
     if (!request.ok) {
       setErrorText("Item not found. Please check the spelling and try again.");
